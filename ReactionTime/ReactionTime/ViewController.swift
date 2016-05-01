@@ -10,6 +10,11 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var startButton: NSButton!
+    @IBOutlet weak var reactionView: NSView!
+    @IBOutlet weak var reactionTimeLabel: NSTextField!
+    @IBOutlet weak var averageReactionTimeLabel: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +27,8 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func startButtonClicked(sender: NSButton) {
+    }
 
 }
 

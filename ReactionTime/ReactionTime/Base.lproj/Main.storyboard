@@ -679,6 +679,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="startButtonClicked:" target="XfG-lQ-9wD" id="oNq-em-cIo"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTo-HO-FAs">
                                 <rect key="frame" x="18" y="444" width="228" height="17"/>
@@ -709,6 +712,12 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="averageReactionTimeLabel" destination="c6v-E8-wJj" id="RLs-Xx-sgv"/>
+                        <outlet property="reactionTimeLabel" destination="LVI-o9-87P" id="NiE-Xk-iUf"/>
+                        <outlet property="reactionView" destination="9W8-QI-ziq" id="9Uf-iZ-8u0"/>
+                        <outlet property="startButton" destination="HLU-lc-jK8" id="yAi-hf-hqD"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
