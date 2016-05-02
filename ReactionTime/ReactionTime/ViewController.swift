@@ -7,13 +7,23 @@
 //
 
 import Cocoa
+import Quartz
 
 class ViewController: NSViewController {
+    
+    private static let delayBeforeFirstTarget: Double = 0.1
+    private static let delayBetweenTargets: Double = 1
+    
+    private static let numberOfColumns: Int = 3
+    private static let numberOfRows: Int = 3
 
     @IBOutlet weak var startButton: NSButton!
-    @IBOutlet weak var reactionView: NSView!
+    @IBOutlet weak var targetGridView: NSView!
     @IBOutlet weak var reactionTimeLabel: NSTextField!
     @IBOutlet weak var averageReactionTimeLabel: NSTextField!
+    
+    var targetView: NSView?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +38,37 @@ class ViewController: NSViewController {
     }
 
     @IBAction func startButtonClicked(sender: NSButton) {
+        print("startButtonClicked()")
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(
+                ViewController.delayBeforeFirstTarget,
+                target: self,
+                selector: #selector(displayTarget),
+                userInfo: nil,
+                repeats: false)
+    }
+    
+    func displayTarget() {
+        print("displayTarget()")
+        
+        let targetColumn = Int(rand()) % 3
+        let targetRow = Int(rand()) % 3
+        
+        let targetWidth = Int(targetGridView.frame.size.width) / ViewController.numberOfColumns
+        let targetHeight = Int(targetGridView.frame.size.height) / ViewController.numberOfRows
+        
+        let targetX = targetColumn * targetWidth
+        let targetY = targetRow * targetHeight
+        
+        print("targetColumn = \(targetColumn), targetRow = \(targetRow), " +
+            "targetWidth = \(targetWidth), targetHeight = \(targetHeight), " +
+            "targetX = \(targetX), targetY = \(targetY)")
+        
+        targetView = NSView(frame: NSRect(x: targetX, y: targetY, width: targetWidth, height: targetHeight))
+        targetView!.wantsLayer = true
+        targetView!.layer?.backgroundColor = NSColor.redColor().CGColor
+        
+        targetGridView.addSubview(targetView!)
     }
 
 }
-

@@ -715,8 +715,8 @@
                     <connections>
                         <outlet property="averageReactionTimeLabel" destination="c6v-E8-wJj" id="RLs-Xx-sgv"/>
                         <outlet property="reactionTimeLabel" destination="LVI-o9-87P" id="NiE-Xk-iUf"/>
-                        <outlet property="reactionView" destination="9W8-QI-ziq" id="9Uf-iZ-8u0"/>
                         <outlet property="startButton" destination="HLU-lc-jK8" id="yAi-hf-hqD"/>
+                        <outlet property="targetGridView" destination="9W8-QI-ziq" id="fSC-ph-08O"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
