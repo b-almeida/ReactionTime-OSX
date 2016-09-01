@@ -1,3 +1,3 @@
-# Reaction Time - OS X (development stopped)
+# Reaction Time - macOS
 
-An OS X application for testing one's reaction time by clicking on-screen areas.
+A macOS application for testing the user's reaction time by clicking on-screen areas.
