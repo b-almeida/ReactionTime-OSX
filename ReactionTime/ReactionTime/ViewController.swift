@@ -11,11 +11,11 @@ import Quartz
 
 class ViewController: NSViewController {
     
-    private static let delayBeforeFirstTarget: Double = 0.1
-    private static let delayBetweenTargets: Double = 1
+    fileprivate static let delayBeforeFirstTarget: Double = 0.1
+    fileprivate static let delayBetweenTargets: Double = 1
     
-    private static let numberOfColumns: Int = 3
-    private static let numberOfRows: Int = 3
+    fileprivate static let numberOfColumns: Int = 3
+    fileprivate static let numberOfRows: Int = 3
 
     @IBOutlet weak var startButton: NSButton!
     @IBOutlet weak var targetGridView: NSView!
@@ -37,11 +37,11 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func startButtonClicked(sender: NSButton) {
+    @IBAction func startButtonClicked(_ sender: NSButton) {
         print("startButtonClicked()")
         
-        _ = NSTimer.scheduledTimerWithTimeInterval(
-                ViewController.delayBeforeFirstTarget,
+        _ = Timer.scheduledTimer(
+                timeInterval: ViewController.delayBeforeFirstTarget,
                 target: self,
                 selector: #selector(displayTarget),
                 userInfo: nil,
@@ -51,8 +51,8 @@ class ViewController: NSViewController {
     func displayTarget() {
         print("displayTarget()")
         
-        let targetColumn = Int(rand()) % 3
-        let targetRow = Int(rand()) % 3
+        let targetColumn = Int(arc4random()) % 3
+        let targetRow = Int(arc4random()) % 3
         
         let targetWidth = Int(targetGridView.frame.size.width) / ViewController.numberOfColumns
         let targetHeight = Int(targetGridView.frame.size.height) / ViewController.numberOfRows
@@ -66,7 +66,7 @@ class ViewController: NSViewController {
         
         targetView = NSView(frame: NSRect(x: targetX, y: targetY, width: targetWidth, height: targetHeight))
         targetView!.wantsLayer = true
-        targetView!.layer?.backgroundColor = NSColor.redColor().CGColor
+        targetView!.layer?.backgroundColor = NSColor.red.cgColor
         
         targetGridView.addSubview(targetView!)
     }
