@@ -25,6 +25,8 @@ class ViewController: NSViewController {
     fileprivate var targetView: NSView?
     /// Time when the target view was shown
     fileprivate var startTime: Date?
+    fileprivate var totalReactionTime: TimeInterval = 0
+    fileprivate var numberOfReactionTimes: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +88,23 @@ class ViewController: NSViewController {
         guard let targetView = targetView, let startTime = startTime
             else { return }
         
-        // Calculate the elapsed reaction time
-        let elapsed = -(startTime.timeIntervalSinceNow)
-        let elapsedString = String(format: "%.6f s", elapsed)
-        print("elapsed = \(elapsedString)")
-        reactionTimeLabel.stringValue = elapsedString
+        // Calculate the reaction time
+        let reactionTime = -(startTime.timeIntervalSinceNow)
+        totalReactionTime += reactionTime
+        numberOfReactionTimes += 1
+        
+        // Display the reaction time
+        let reactionTimeString = String(format: "%.6f s", reactionTime)
+        print("reactionTime = \(reactionTimeString)")
+        reactionTimeLabel.stringValue = "Time: \(reactionTimeString)"
+        
+        // Calculate the average reaction time
+        let averageReactionTime = totalReactionTime / Double(numberOfReactionTimes)
+        
+        // Display the average reaction time
+        let averageReactionTimeString = String(format: "%.6f s", averageReactionTime)
+        print("averageReactionTime = \(averageReactionTimeString)")
+        averageReactionTimeLabel.stringValue = "Average: \(averageReactionTimeString)"
         
         // Remove the target and timer
         targetView.removeFromSuperview()
